@@ -1,0 +1,266 @@
+:root {
+  --bg1: #ff9acb;
+  --bg2: #ff6fa9;
+  --card-bg: rgba(255,240,245,0.95);
+  --accent: #ff4f9e;
+  --heading: #b20061;
+  --text: #5a0033;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: "Pacifico", "Poppins", cursive;
+  background: linear-gradient(135deg, var(--bg1), var(--bg2));
+  background-attachment: fixed;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("pic4.jpg");
+  background-size: 180px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.portfolio {
+  width: 100%;
+  max-width: 960px;
+  background: var(--card-bg);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
+  overflow: hidden;
+  margin: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+header {
+  text-align: center;
+  padding: 36px 40px 20px;
+  border-bottom: 2px dashed #ffb3d9;
+}
+
+h1 {
+  margin: 0;
+  font-size: 32px;
+  color: var(--heading);
+  text-shadow: 0 3px 6px rgba(255, 105, 180, 0.4);
+}
+
+p.intro {
+  color: var(--text);
+  font-size: 15px;
+  margin: 8px 0 0;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  padding: 28px 40px;
+}
+
+/* ✨ Clickable member cards */
+.member-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.member {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 12px;
+  background: #ffffffee;
+  border: 2px solid #ffb3d9;
+  transition: 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+.member:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 12px 26px rgba(255,105,180,0.3);
+  background: #fff0f7;
+  cursor: pointer;
+}
+
+/* subtle sparkle when hovered */
+.member::after {
+  content: "✨";
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  opacity: 0;
+  transition: 0.4s ease;
+}
+
+.member:hover::after {
+  opacity: 1;
+  animation: sparklePop 1.2s infinite ease-in-out;
+}
+
+@keyframes sparklePop {
+  0%,100% { transform: translateY(0); opacity: 0.5; }
+  50% { transform: translateY(-6px); opacity: 1; }
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #ffe6f4;
+  color: var(--heading);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.member-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.member-name {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.member-role {
+  font-size: 13px;
+  color: #b20061;
+  opacity: 0.8;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  border-left: 2px dashed #ffd0e6;
+  padding-left: 16px;
+  position: relative;
+}
+
+.group-photo {
+  width: 100%;
+  max-width: 280px;
+  height: 200px;
+  background-image: url("group.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 14px;
+  border: 3px solid #ffd1ea;
+  box-shadow: 0 8px 20px rgba(255,105,180,0.25);
+}
+
+.portfolio-link {
+  padding: 12px 18px;
+  background: #ffe3f4;
+  border: 2px solid #ff8bc2;
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--heading);
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(255,105,180,0.2);
+  transition: 0.25s ease;
+}
+
+.portfolio-link:hover {
+  transform: translateY(-4px) scale(1.05);
+  background: #ffb8d9;
+  box-shadow: 0 12px 30px rgba(255,105,180,0.4);
+}
+
+footer {
+  text-align: center;
+  padding: 14px;
+  font-size: 14px;
+  color: #6e2252;
+}
+
+.sparkles::before, .sparkles::after {
+  content: "✨";
+  font-size: 20px;
+  position: absolute;
+  animation: sparkle 2s infinite ease-in-out;
+  top: 10%;
+  right: 10%;
+  z-index: 1;
+}
+.sparkles::after {
+  left: 10%;
+  animation-delay: 1s;
+}
+
+@keyframes sparkle {
+  0% {opacity: 0; transform: translateY(0) rotate(0deg);}
+  50% {opacity: 1; transform: translateY(-20px) rotate(20deg);}
+  100% {opacity: 0; transform: translateY(0) rotate(0deg);}
+}
+
+.hearts::before, .hearts::after {
+  content: "💗";
+  font-size: 18px;
+  position: absolute;
+  animation: hearts 3s infinite ease-in-out;
+  bottom: 10%;
+}
+.hearts::after {
+  left: 50%;
+  animation-delay: 1.2s;
+}
+
+@keyframes hearts {
+  0% {opacity: 0; transform: translateY(0);}
+  50% {opacity: 1; transform: translateY(-30px);}
+  100% {opacity: 0; transform: translateY(0);}
+}
+
+.sticker {
+  position: absolute;
+  width: 70px;
+  animation: float 3s ease-in-out infinite;
+  z-index: 3;
+}
+
+.sticker-1 { top: -10px; right: -5px; }
+.sticker-2 { bottom: -10px; left: -10px; }
+.sticker-3 { bottom: 30px; right: 10px; }
+
+@keyframes float {
+  0%,100% {transform: translateY(0);}
+  50% {transform: translateY(-10px);}
+}
+
+@media (max-width: 880px) {
+  main { 
+    grid-template-columns: 1fr; 
+  }
+
+  .sidebar {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .group-photo {
+    height: 220px;
+  }
+}
